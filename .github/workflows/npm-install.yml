@@ -1,0 +1,17 @@
+name: Install package from GitHub Packages
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v3
+      # Setup .npmrc file to install from GitHub Packages
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+      - run: npm install -ddd @dhruv-gh-test-org-1/npm-test-package-2 --registry=https://npm.pkg.github.com
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
