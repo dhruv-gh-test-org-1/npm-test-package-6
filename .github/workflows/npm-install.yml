@@ -13,6 +13,7 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@dhruv-gh-test-org-1'
+      - run: npm cache clean --force
       - run: npm install -ddd @dhruv-gh-test-org-1/npm-test-package-2
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
